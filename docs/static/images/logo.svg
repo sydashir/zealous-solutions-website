@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F4D03F;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B7950B;stop-opacity:1" />
+    </linearGradient>
+    <filter id="smoothShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#D4AF37" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Outer circle -->
+  <circle cx="60" cy="60" r="55" fill="url(#goldGradient)" filter="url(#smoothShadow)" stroke="#B7950B" stroke-width="1"/>
+  
+  <!-- Z logo design - smooth curves -->
+  <g fill="#FFFFFF" stroke="none">
+    <!-- Top horizontal line -->
+    <path d="M25 35 L95 35 Q97 35 97 37 L97 42 Q97 44 95 44 L40 44 L90 75 Q92 76 92 78 L92 85 Q92 87 90 87 L25 87 Q23 87 23 85 L23 80 Q23 78 25 78 L80 78 L30 47 Q28 46 28 44 L28 37 Q28 35 30 35 Z"/>
+  </g>
+  
+  <!-- Inner accent lines for depth -->
+  <g stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+    <line x1="35" y1="50" x2="85" y2="50"/>
+    <line x1="35" y1="60" x2="85" y2="60"/>
+    <line x1="35" y1="70" x2="85" y2="70"/>
+  </g>
+  
+  <!-- Subtle highlight for smooth effect -->
+  <circle cx="60" cy="60" r="55" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.3"/>
+</svg>

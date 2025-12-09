@@ -1,6 +1,10 @@
-# Zealous Solutions - Futuristic Call Centre Website
+# Zealous Solutions Website
 
-A cutting-edge, optimized call centre website with futuristic minimalistic design, featuring advanced glass morphism effects, neon glows, and high-performance architecture.
+Professional call center and business solutions website deployed on GitHub Pages.
+
+## Live Website
+- **GitHub Pages**: [https://dev778d.github.io/zealous-solutions-website/](https://dev778d.github.io/zealous-solutions-website/)
+- **Custom Domain**: [https://zealous-solutions.com](https://zealous-solutions.com) (redirect from GitHub Pages)
 
 ## ✨ Features
 
