@@ -38,9 +38,9 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-here-ch
 app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
 app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 587))
 app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', True)
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME', 'your-email@gmail.com')
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME', 'Obsyed1217@gmail.com')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'your-app-password')
-app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'your-email@gmail.com')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'Obsyed1217@gmail.com')
 
 # Initialize extensions
 mail = Mail(app)
@@ -192,7 +192,7 @@ def submit_quote():
         # Send email notification
         msg = Message(
             subject=f'New Quote Request from {first_name} {last_name}',
-            recipients=['info@zealous-solutions.com'],  # Your business email
+            recipients=['Obsyed1217@gmail.com', 'info@zealous-solutions.com'],  # Your business emails
             body=email_content
         )
         
@@ -274,7 +274,7 @@ def submit_contact():
         # Send email notification
         msg = Message(
             subject=f'Contact Form: {subject}' if subject else f'Contact from {name}',
-            recipients=['info@zealous-solutions.com'],
+            recipients=['Obsyed1217@gmail.com', 'info@zealous-solutions.com'],
             body=email_content
         )
         
