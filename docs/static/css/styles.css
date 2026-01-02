@@ -503,9 +503,13 @@ html {
 
 .logo {
     width: auto;
-    height: 60px;
+    height: 80px; /* Increased size for better visibility */
     border-radius: 0;
     object-fit: contain;
+}
+
+.brand-text {
+    display: none; /* Hide text since it's in the logo */
 }
 
 .brand-text h2 {
