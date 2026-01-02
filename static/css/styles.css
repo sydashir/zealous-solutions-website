@@ -502,9 +502,10 @@ html {
 }
 
 .logo {
-    width: 60px;
+    width: auto;
     height: 60px;
-    border-radius: 50%;
+    border-radius: 0;
+    object-fit: contain;
 }
 
 .brand-text h2 {
