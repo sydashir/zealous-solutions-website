@@ -8,10 +8,10 @@
     <title>Request a Quote - Zealous Solutions</title>
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style">
+    <link rel="preload" href="static/css/styles.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
     
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="static/css/styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -20,8 +20,8 @@
     <header class="header">
         <nav class="navbar">
             <div class="container">
-                <a href="{{ url_for('home') }}" class="nav-brand">
-                    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Zealous Solutions" class="logo">
+                <a href="/" class="nav-brand">
+                    <img src="static/images/logo.jpg" alt="Zealous Solutions" class="logo">
                     <div class="brand-text">
                         <h2>ZEALOUS</h2>
                         <span>SOLUTIONS</span>
@@ -29,12 +29,12 @@
                     </div>
                 </a>
                 <ul class="nav-menu">
-                    <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
-                    <li><a href="{{ url_for('services') }}" class="nav-link">Services</a></li>
-                    <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
-                    <li><a href="{{ url_for('industries') }}" class="nav-link">Industries</a></li>
-                    <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
-                    <li><a href="{{ url_for('request_quote') }}" class="nav-link quote-btn futuristic-nav active">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/services" class="nav-link">Services</a></li>
+                    <li><a href="/about" class="nav-link">About</a></li>
+                    <li><a href="/industries" class="nav-link">Industries</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                    <li><a href="/request-quote" class="nav-link quote-btn futuristic-nav active">
                         <span>Get Quote</span>
                         <div class="nav-glow"></div>
                     </a></li>
@@ -331,20 +331,20 @@
                 <div class="footer-section">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="{{ url_for('inbound_services') }}">Inbound Call Center</a></li>
-                        <li><a href="{{ url_for('outbound_services') }}">Outbound Call Center</a></li>
-                        <li><a href="{{ url_for('digital_marketing') }}">Digital Marketing</a></li>
-                        <li><a href="{{ url_for('website_development') }}">Website Development</a></li>
+                        <li><a href="/services/inbound">Inbound Call Center</a></li>
+                        <li><a href="/services/outbound">Outbound Call Center</a></li>
+                        <li><a href="/services/digital-marketing">Digital Marketing</a></li>
+                        <li><a href="/services/website-development">Website Development</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Industries</h4>
                     <ul>
-                        <li><a href="{{ url_for('insurance_industry') }}">Insurance</a></li>
-                        <li><a href="{{ url_for('healthcare_industry') }}">Healthcare</a></li>
-                        <li><a href="{{ url_for('financial_industry') }}">Financial Services</a></li>
-                        <li><a href="{{ url_for('real_estate_industry') }}">Real Estate</a></li>
+                        <li><a href="/industries/insurance">Insurance</a></li>
+                        <li><a href="/industries/healthcare">Healthcare</a></li>
+                        <li><a href="/industries/financial">Financial Services</a></li>
+                        <li><a href="/industries/real-estate">Real Estate</a></li>
                     </ul>
                 </div>
                 
@@ -362,15 +362,15 @@
             <div class="footer-bottom">
                 <p>&copy; 2024 Zealous Solutions. All Rights Reserved.</p>
                 <div class="footer-links">
-                    <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
-                    <a href="{{ url_for('terms_conditions') }}">Terms & Conditions</a>
-                    <a href="{{ url_for('sitemap') }}">Sitemap</a>
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-conditions">Terms & Conditions</a>
+                    <a href="/sitemap">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="static/js/script.js"></script>
     <script>
         // Multi-step form functionality
         document.addEventListener('DOMContentLoaded', function() {

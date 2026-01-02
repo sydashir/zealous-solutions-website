@@ -37,10 +37,13 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-here-ch
 # Email Configuration (Use environment variables in production)
 app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
 app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 587))
-app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', True)
+app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', 'True').lower() in ['true', '1', 'yes']
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME', 'Obsyed1217@gmail.com')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'your-app-password')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', '')  # Must be set via environment variable
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'Obsyed1217@gmail.com')
+
+# Recipient email for receiving quote requests
+RECIPIENT_EMAIL = os.environ.get('RECIPIENT_EMAIL', 'Obsyed1217@gmail.com')
 
 # Initialize extensions
 mail = Mail(app)
@@ -189,10 +192,10 @@ def submit_quote():
         Submitted: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         """
         
-        # Send email notification
+        # Send email notification to you
         msg = Message(
             subject=f'New Quote Request from {first_name} {last_name}',
-            recipients=['Obsyed1217@gmail.com', 'info@zealous-solutions.com'],  # Your business emails
+            recipients=[RECIPIENT_EMAIL],  # Your email to receive quote requests
             body=email_content
         )
         
@@ -271,10 +274,10 @@ def submit_contact():
         Submitted: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         """
         
-        # Send email notification
+        # Send email notification to you
         msg = Message(
             subject=f'Contact Form: {subject}' if subject else f'Contact from {name}',
-            recipients=['Obsyed1217@gmail.com', 'info@zealous-solutions.com'],
+            recipients=[RECIPIENT_EMAIL],  # Your email to receive contact messages
             body=email_content
         )
         

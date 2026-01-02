@@ -69,7 +69,14 @@
                         <h2>Send us a Message</h2>
                         <p>Fill out the form below and we'll get back to you within 24 hours.</p>
                         
-                        <form id="contactForm" class="contact-form" action="/submit-contact" method="POST">
+                        <!-- 
+                             IMPORTANT: For GitHub Pages (Static Site), the Flask backend cannot send emails.
+                             We must use a service like Formspree. 
+                             1. Go to https://formspree.io/
+                             2. Create a new form
+                             3. Replace 'https://formspree.io/f/your-form-id' with your actual Formspree URL below.
+                        -->
+                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name">Full Name *</label>
