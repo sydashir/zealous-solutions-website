@@ -127,7 +127,7 @@ faqItems.forEach(item => {
     });
 });
 
-// Contact Form Submission with Flask Backend
+// Contact Form Submission with Formspree
 const contactForm = document.querySelector('.quote-form');
 
 if (contactForm) {
@@ -135,34 +135,52 @@ if (contactForm) {
         e.preventDefault();
         
         // Get submit button and show loading state
-        const submitBtn = contactForm.querySelector('.submit-btn');
-        const btnText = submitBtn.querySelector('.btn-text');
-        const originalText = btnText.textContent;
+        const submitBtn = contactForm.querySelector('.submit-quote') || contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
         
         // Show loading state
-        btnText.textContent = 'Submitting...';
+        submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
         
         try {
             // Get form data
             const formData = new FormData(contactForm);
             
-            // Send to Flask backend
-            const response = await fetch('/submit-quote', {
+            // Get the form action URL (Formspree URL)
+            const formAction = contactForm.getAttribute('action');
+            
+            // Send to Formspree
+            const response = await fetch(formAction, {
                 method: 'POST',
-                body: formData
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
             });
             
-            const result = await response.json();
-            
-            if (result.success) {
+            if (response.ok) {
                 // Show success message with custom alert
-                showCustomAlert('Success!', result.message, 'success');
+                showCustomAlert('Success!', 'Thank you! Your quote request has been submitted. We will get back to you within 24 hours.', 'success');
                 // Reset the form
                 contactForm.reset();
+                // Reset to step 1
+                const firstStep = document.querySelector('[data-step="1"]');
+                const progressFill = document.querySelector('.progress-fill');
+                const progressSteps = document.querySelectorAll('.progress-steps .step');
+                if (firstStep) {
+                    document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+                    firstStep.classList.add('active');
+                    if (progressFill) progressFill.style.width = '25%';
+                    if (progressSteps) {
+                        progressSteps.forEach((step, index) => {
+                            step.classList.toggle('active', index === 0);
+                        });
+                    }
+                }
             } else {
+                const result = await response.json();
                 // Show error message
-                showCustomAlert('Error', result.message, 'error');
+                showCustomAlert('Error', result.error || 'Something went wrong. Please try again.', 'error');
             }
             
         } catch (error) {
@@ -170,7 +188,7 @@ if (contactForm) {
             showCustomAlert('Error', 'Network error. Please check your connection and try again.', 'error');
         } finally {
             // Reset button state
-            btnText.textContent = originalText;
+            submitBtn.textContent = originalText;
             submitBtn.disabled = false;
         }
     });
@@ -538,39 +556,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Handle quote form submission
-        quoteForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            
-            // Show loading state
-            submitButton.textContent = 'Submitting...';
-            submitButton.disabled = true;
-            
-            try {
-                const response = await fetch('/submit-quote', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    showAlert(result.message, 'success');
-                    this.reset();
-                    showStep(1); // Reset to first step
-                } else {
-                    showAlert(result.message, 'error');
-                }
-            } catch (error) {
-                showAlert('Network error. Please try again.', 'error');
-            } finally {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            }
-        });
+        // Form submission is handled by the contactForm handler above
+        // The form will submit to Formspree as configured in the action attribute
     }
 });
